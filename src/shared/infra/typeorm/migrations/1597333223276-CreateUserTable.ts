@@ -30,6 +30,7 @@ export default class CreateUserTable1597333223276
           {
             name: 'avatar',
             type: 'varchar',
+            isNullable: true,
           },
           {
             name: 'created_at',

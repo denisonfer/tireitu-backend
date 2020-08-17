@@ -29,6 +29,8 @@ describe('UpdateAvatarUser', () => {
       id_user: user.id,
       name: 'sicrano',
       email: 'fulano@email.com',
+      old_password: '123456',
+      new_password: '123456789',
     });
 
     expect(editedUser.name).toBe('sicrano');

@@ -8,6 +8,8 @@ const profileRoutes = Router();
 
 const profileController = new ProfileController();
 
+profileRoutes.get('/', ensureAuthenticatedUser, profileController.show);
+
 profileRoutes.put(
   '/',
   celebrate({

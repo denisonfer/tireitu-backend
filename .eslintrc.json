@@ -24,6 +24,7 @@
     "prettier"
   ],
   "rules": {
+    "no-console": "off",
     "camelcase": "off",
     "no-useless-constructor": "off",
     "prettier/prettier": "error",

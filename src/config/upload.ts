@@ -5,7 +5,7 @@ import { randomBytes } from 'crypto';
 const tempFolder = resolve(__dirname, '..', '..', 'temp');
 
 interface IUploadConfig {
-  driver: 'disk';
+  driver: 'disk' | 's3';
 
   diretory: string;
   uploadsFolder: string;
@@ -13,10 +13,18 @@ interface IUploadConfig {
   multer: {
     storage: StorageEngine;
   };
+
+  config: {
+    // eslint-disable-next-line @typescript-eslint/ban-types
+    disk: {};
+    aws: {
+      bucket: string;
+    };
+  };
 }
 
 export default {
-  driver: 'disk',
+  driver: process.env.STORAGE_DRIVER,
 
   diretory: tempFolder,
   uploadsFolder: resolve(tempFolder, 'uploads'),
@@ -31,5 +39,12 @@ export default {
         return callback(null, fileName);
       },
     }),
+  },
+
+  config: {
+    disk: {},
+    aws: {
+      bucket: 'app-tireitu',
+    },
   },
 } as IUploadConfig;

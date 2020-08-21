@@ -4,11 +4,13 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
 
 import { Exclude, Expose } from 'class-transformer';
 
 import uploadConfig from '@config/upload';
+import UsersGroups from '@modules/groups/infra/typeorm/entities/UsersGroups';
 
 @Entity('users')
 class User {
@@ -27,6 +29,9 @@ class User {
 
   @Column()
   avatar: string;
+
+  @OneToMany(() => UsersGroups, usersgroups => usersgroups.user)
+  users_groups: UsersGroups[];
 
   @CreateDateColumn()
   created_at: Date;

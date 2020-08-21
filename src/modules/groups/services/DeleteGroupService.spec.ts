@@ -25,7 +25,6 @@ describe('DeleteGroup', () => {
 
     const group = await fakeGroupsRepository.create({
       name: 'grupo',
-      user_admin: user.id,
       date_raffle: new Date(2020, 7, 22),
       date_party: new Date(2020, 7, 22),
       hour_party: new Date(2020, 7, 22),

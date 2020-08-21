@@ -1,0 +1,29 @@
+<style>
+  .message-content {
+    font-family: Arial, Helvetica, sans-serif;
+    max-width: 600px;
+    font-size: 18px;
+    line-height: 21px;
+  }
+</style>
+
+<div class="message-content">
+  <h1>Olá, {{ name_invited }}</h1>
+  <h3>Você foi convidado para participar do grupo {{ group_name }}.</h3>
+  <p><strong>Dados do grupo:</strong></p>
+  <hr>
+  <p><strong>Nome do grupo: </strong> {{ group_name }}</p>
+  <p><strong>Data do sorteio: </strong>{{ date_raffled }}</p>
+  <p><strong>Data da festa: </strong>{{ date_party }}</p>
+  <p><strong>Hora da festa: </strong>{{ hour_party }}</p>
+  <p><strong>Local da festa: </strong>{{ locale_party }}</p>
+  <p><strong>Valor mínimo: </strong>R${{ value_min }}</p>
+  <hr>
+
+  <p>Use o código de acesso abaixo para entrar no grupo:</p>
+  <strong>{{ invite_key }}</strong>
+  <br>
+  <hr>
+  <strong>Equipe Tireitu</strong>
+
+</div>

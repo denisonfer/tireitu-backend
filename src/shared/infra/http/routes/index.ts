@@ -6,6 +6,8 @@ import profileRoutes from '@modules/users/infra/http/routes/profile.routes';
 import passwordRoutes from '@modules/users/infra/http/routes/password.routes';
 import giftsListRoutes from '@modules/users/infra/http/routes/giftsList.routes';
 import groupRoutes from '@modules/groups/infra/http/routes/group.routes';
+import inviteRoutes from '@modules/groups/infra/http/routes/invite.routes';
+import usersGroupsRoutes from '@modules/groups/infra/http/routes/usersGroups.routes';
 
 const routes = Router();
 
@@ -15,5 +17,7 @@ routes.use('/profiles', profileRoutes);
 routes.use('/password', passwordRoutes);
 routes.use('/gifts', giftsListRoutes);
 routes.use('/groups', groupRoutes);
+routes.use('/invites', inviteRoutes);
+routes.use('/groups/participants', usersGroupsRoutes);
 
 export default routes;

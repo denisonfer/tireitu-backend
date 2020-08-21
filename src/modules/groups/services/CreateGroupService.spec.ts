@@ -2,8 +2,10 @@ import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepo
 import AppError from '@shared/errors/AppError';
 import FakeGroupsRepository from '../repositories/fakes/FakeGroupsRepository';
 import CreateGroupService from './CreateGroupService';
+import FakeUsersGroupsRepository from '../repositories/fakes/FakeUsersGroupsRepository';
 
 let fakeGroupsRepository: FakeGroupsRepository;
+let fakeUsersGroupsRepository: FakeUsersGroupsRepository;
 let fakeUsersRepository: FakeUsersRepository;
 
 let createGroup: CreateGroupService;
@@ -11,11 +13,13 @@ let createGroup: CreateGroupService;
 describe('CreateGroup', () => {
   beforeEach(() => {
     fakeGroupsRepository = new FakeGroupsRepository();
+    fakeUsersGroupsRepository = new FakeUsersGroupsRepository();
     fakeUsersRepository = new FakeUsersRepository();
 
     createGroup = new CreateGroupService(
       fakeGroupsRepository,
       fakeUsersRepository,
+      fakeUsersGroupsRepository,
     );
   });
 

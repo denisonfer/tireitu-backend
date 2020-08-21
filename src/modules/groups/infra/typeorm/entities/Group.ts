@@ -4,15 +4,14 @@ import {
   Column,
   CreateDateColumn,
   UpdateDateColumn,
+  OneToMany,
 } from 'typeorm';
+import UsersGroups from './UsersGroups';
 
 @Entity('groups')
 class Group {
   @PrimaryGeneratedColumn('uuid')
   id: string;
-
-  @Column()
-  user_admin: string;
 
   @Column()
   name: string;
@@ -31,6 +30,9 @@ class Group {
 
   @Column('decimal')
   value_min: number;
+
+  @OneToMany(() => UsersGroups, usersgroups => usersgroups.group)
+  users_groups: UsersGroups[];
 
   @CreateDateColumn()
   created_at: Date;

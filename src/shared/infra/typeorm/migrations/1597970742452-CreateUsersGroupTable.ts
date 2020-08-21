@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateGroupTable1597921588164
+export default class CreateUsersGroupTable1597970742452
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'groups',
+        name: 'users_groups',
         columns: [
           {
             name: 'id',
@@ -15,35 +15,8 @@ export default class CreateGroupTable1597921588164
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'name',
-            type: 'varchar',
-          },
-          {
-            name: 'date_raffle',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'date_party',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'hour_party',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'locale_party',
-            type: 'varchar',
-          },
-          {
-            name: 'value_min',
-            type: 'decimal',
-            precision: 10,
-            scale: 2,
-          },
-          {
-            name: 'status_raffle',
+            name: 'admin',
             type: 'boolean',
-            isNullable: true,
             default: false,
           },
           {
@@ -62,6 +35,6 @@ export default class CreateGroupTable1597921588164
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('groups');
+    await queryRunner.dropTable('users_groups');
   }
 }

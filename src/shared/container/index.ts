@@ -15,6 +15,12 @@ import GiftsRepository from '@modules/users/infra/typeorm/repositories/GiftsRepo
 import IGroupsRepository from '@modules/groups/repositories/IGroupsRepository';
 import GroupsRepository from '@modules/groups/infra/typeorm/repositories/GroupsRepository';
 
+import IInvitesRepository from '@modules/groups/repositories/IInvitesRepository';
+import InvitesRepository from '@modules/groups/infra/typeorm/repositories/InvitesRepository';
+
+import IUsersGroupsRepository from '@modules/groups/repositories/IUsersGroupsRepository';
+import UsersGroupsRepository from '@modules/groups/infra/typeorm/repositories/UsersGroupsRepository';
+
 container.registerSingleton<IUsersRepository>(
   'UsersRepository',
   UsersRepository,
@@ -33,4 +39,14 @@ container.registerSingleton<IGiftsRepository>(
 container.registerSingleton<IGroupsRepository>(
   'GroupsRepository',
   GroupsRepository,
+);
+
+container.registerSingleton<IInvitesRepository>(
+  'InvitesRepository',
+  InvitesRepository,
+);
+
+container.registerSingleton<IUsersGroupsRepository>(
+  'UsersGroupsRepository',
+  UsersGroupsRepository,
 );

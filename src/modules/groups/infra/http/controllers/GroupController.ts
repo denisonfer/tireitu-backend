@@ -4,21 +4,8 @@ import { container } from 'tsyringe';
 import CreateGroupService from '@modules/groups/services/CreateGroupService';
 import EditGroupService from '@modules/groups/services/EditGroupService';
 import DeleteGroupService from '@modules/groups/services/DeleteGroupService';
-import ShowGroupsOfUserService from '@modules/groups/services/ShowGroupsOfUserService';
 
 class GroupController {
-  public async show(req: Request, res: Response): Promise<Response> {
-    const id_user = req.user.id;
-
-    const showGroups = container.resolve(ShowGroupsOfUserService);
-
-    const groups = await showGroups.execute({
-      id_user,
-    });
-
-    return res.json(groups);
-  }
-
   public async create(req: Request, res: Response): Promise<Response> {
     const user_admin = req.user.id;
     const {

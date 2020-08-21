@@ -1,20 +1,23 @@
 import FakeUsersRepository from '@modules/users/repositories/fakes/FakeUsersRepository';
 import AppError from '@shared/errors/AppError';
-import FakeGroupsRepository from '../repositories/fakes/FakeGroupsRepository';
 import ShowGroupsOfUserService from './ShowGroupsOfUserService';
+import FakeUsersGroupsRepository from '../repositories/fakes/FakeUsersGroupsRepository';
+import FakeGroupsRepository from '../repositories/fakes/FakeGroupsRepository';
 
 let fakeGroupsRepository: FakeGroupsRepository;
+let fakeUsersGroupsRepository: FakeUsersGroupsRepository;
 let fakeUsersRepository: FakeUsersRepository;
 
 let showGroupsOfUser: ShowGroupsOfUserService;
 
 describe('ShowGroupsOfUser', () => {
   beforeEach(() => {
-    fakeGroupsRepository = new FakeGroupsRepository();
+    fakeUsersGroupsRepository = new FakeUsersGroupsRepository();
     fakeUsersRepository = new FakeUsersRepository();
+    fakeGroupsRepository = new FakeGroupsRepository();
 
     showGroupsOfUser = new ShowGroupsOfUserService(
-      fakeGroupsRepository,
+      fakeUsersGroupsRepository,
       fakeUsersRepository,
     );
   });
@@ -32,7 +35,6 @@ describe('ShowGroupsOfUser', () => {
 
     const group1 = await fakeGroupsRepository.create({
       name: 'grupo',
-      user_admin: user.id,
       date_raffle: new Date(2020, 7, 22),
       date_party: new Date(2020, 7, 22),
       hour_party: new Date(2020, 7, 22),
@@ -42,7 +44,6 @@ describe('ShowGroupsOfUser', () => {
 
     const group2 = await fakeGroupsRepository.create({
       name: 'grupo 2',
-      user_admin: user.id,
       date_raffle: new Date(2020, 7, 22),
       date_party: new Date(2020, 7, 22),
       hour_party: new Date(2020, 7, 22),

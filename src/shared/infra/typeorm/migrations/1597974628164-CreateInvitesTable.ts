@@ -1,11 +1,11 @@
 import { MigrationInterface, QueryRunner, Table } from 'typeorm';
 
-export default class CreateGroupTable1597921588164
+export default class CreateInvitesTable1597974628164
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'groups',
+        name: 'invites',
         columns: [
           {
             name: 'id',
@@ -15,36 +15,13 @@ export default class CreateGroupTable1597921588164
             default: 'uuid_generate_v4()',
           },
           {
-            name: 'name',
-            type: 'varchar',
-          },
-          {
-            name: 'date_raffle',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'date_party',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'hour_party',
-            type: 'timestamp with time zone',
-          },
-          {
-            name: 'locale_party',
-            type: 'varchar',
-          },
-          {
-            name: 'value_min',
-            type: 'decimal',
-            precision: 10,
-            scale: 2,
-          },
-          {
-            name: 'status_raffle',
-            type: 'boolean',
+            name: 'id_group',
+            type: 'uuid',
             isNullable: true,
-            default: false,
+          },
+          {
+            name: 'invite_key',
+            type: 'varchar',
           },
           {
             name: 'created_at',
@@ -57,11 +34,21 @@ export default class CreateGroupTable1597921588164
             default: 'now()',
           },
         ],
+        foreignKeys: [
+          {
+            name: 'InviteGroup',
+            columnNames: ['id_group'],
+            referencedColumnNames: ['id'],
+            referencedTableName: 'groups',
+            onDelete: 'SET NULL',
+            onUpdate: 'CASCADE',
+          },
+        ],
       }),
     );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('groups');
+    await queryRunner.dropTable('invites');
   }
 }

@@ -8,8 +8,6 @@ const groupRoutes = Router();
 
 const groupController = new GroupController();
 
-groupRoutes.get('/user', ensureAuthenticatedUser, groupController.show);
-
 groupRoutes.post(
   '/',
   celebrate({

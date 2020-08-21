@@ -5,6 +5,7 @@ import IUsersRepository from '@modules/users/repositories/IUsersRepository';
 import AppError from '@shared/errors/AppError';
 import Group from '../infra/typeorm/entities/Group';
 import IGroupsRepository from '../repositories/IGroupsRepository';
+import IUsersGroupsRepository from '../repositories/IUsersGroupsRepository';
 
 interface IRequestDTO {
   name: string;
@@ -24,6 +25,9 @@ export default class CreateGroupService {
 
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
+
+    @inject('UsersGroupsRepository')
+    private usersGroupsRepository: IUsersGroupsRepository,
   ) { }
 
   public async execute({
@@ -57,7 +61,6 @@ export default class CreateGroupService {
 
     const group = await this.groupsRepository.create({
       name,
-      user_admin,
       date_raffle,
       date_party,
       hour_party,
@@ -66,6 +69,14 @@ export default class CreateGroupService {
     });
 
     await this.groupsRepository.save(group);
+
+    const participant = await this.usersGroupsRepository.addUserToGroup({
+      id_user: user.id,
+      id_group: group.id,
+      admin: true,
+    });
+
+    await this.usersGroupsRepository.save(participant);
 
     return group;
   }

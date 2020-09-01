@@ -31,6 +31,9 @@ class Group {
   @Column('decimal')
   value_min: number;
 
+  @Column('boolean')
+  status_raffle: boolean;
+
   @OneToMany(() => UsersGroups, usersgroups => usersgroups.group)
   users_groups: UsersGroups[];
 

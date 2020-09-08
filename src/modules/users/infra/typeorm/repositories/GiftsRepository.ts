@@ -39,6 +39,16 @@ class GiftsRepository implements IGiftsRepository {
 
     return gifts;
   }
+
+  public async findByUser(id_user: string): Promise<Gift | undefined> {
+    const gifts = this.ormRepository.findOne({
+      where: {
+        id_user,
+      },
+    });
+
+    return gifts;
+  }
 }
 
 export default GiftsRepository;

@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.74% </span>
+                <span class="strong">68.42% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>36/38</span>
+                <span class='fraction'>26/38</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">77.78% </span>
+                <span class="strong">66.67% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/9</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">94.12% </span>
+                <span class="strong">67.65% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>32/34</span>
+                <span class='fraction'>23/34</span>
             </div>
         
             
@@ -55,7 +55,7 @@
             Press <em>n</em> or <em>j</em> to go to the next uncovered block, <em>b</em>, <em>p</em> or <em>k</em> for the previous block.
         </p>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -187,28 +187,28 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { injectable, inject } from 'tsyringe';
@@ -263,29 +263,29 @@ export default class EditGroupService {
       );
     }
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (isBefore(date_party, Date.now())) {
-<span class="cstat-no" title="statement not covered" >      throw new AppError(</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (isBefore(date_party, Date.now())) {
+      throw new AppError(
         'Data da festa não pode ser menor que a data atual',
         401,
       );
     }
 &nbsp;
-    const group = await this.groupsRepository.findById(id_group);
+    const <span class="cstat-no" title="statement not covered" >group = <span class="cstat-no" title="statement not covered" >await this.groupsRepository.findById(id_group);</span></span>
 &nbsp;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (!group) {
+<span class="cstat-no" title="statement not covered" >    if (!group) {</span>
 <span class="cstat-no" title="statement not covered" >      throw new AppError('Grupo não localizado!', 401);</span>
     }
 &nbsp;
-    group.name = name;
-    group.date_raffle = date_raffle;
-    group.date_party = date_party;
-    group.hour_party = hour_party;
-    group.locale_party = locale_party;
-    group.value_min = value_min;
+<span class="cstat-no" title="statement not covered" >    group.name = name;</span>
+<span class="cstat-no" title="statement not covered" >    group.date_raffle = date_raffle;</span>
+<span class="cstat-no" title="statement not covered" >    group.date_party = date_party;</span>
+<span class="cstat-no" title="statement not covered" >    group.hour_party = hour_party;</span>
+<span class="cstat-no" title="statement not covered" >    group.locale_party = locale_party;</span>
+<span class="cstat-no" title="statement not covered" >    group.value_min = value_min;</span>
 &nbsp;
-    await this.groupsRepository.save(group);
+<span class="cstat-no" title="statement not covered" >    await this.groupsRepository.save(group);</span>
 &nbsp;
-    return group;
+<span class="cstat-no" title="statement not covered" >    return group;</span>
   }
 }
 &nbsp;</pre></td></tr></table></pre>
@@ -295,7 +295,7 @@ export default class EditGroupService {
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank">istanbul</a>
-                at Fri Aug 21 2020 15:53:19 GMT-0300 (GMT-03:00)
+                at Tue Sep 08 2020 15:35:46 GMT-0300 (GMT-03:00)
             </div>
         </div>
         <script src="../../prettify.js"></script>

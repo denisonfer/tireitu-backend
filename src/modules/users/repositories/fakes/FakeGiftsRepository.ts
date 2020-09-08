@@ -34,6 +34,12 @@ class FakeGiftsRepository implements IGiftsRepository {
 
     return giftFounded;
   }
+
+  public async findByUser(id_user: string): Promise<Gift | undefined> {
+    const giftsUser = this.gifts.find(gift => gift.id_user === id_user);
+
+    return giftsUser;
+  }
 }
 
 export default FakeGiftsRepository;

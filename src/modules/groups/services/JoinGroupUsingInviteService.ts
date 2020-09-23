@@ -69,9 +69,9 @@ export default class JoinGroupUsingInviteService {
       id_group: group.id,
     });
 
-    await this.usersGroupsRepository.save(joinUserToGroup);
-
     await this.invitesRepository.remove(validateInvite);
+
+    await this.usersGroupsRepository.save(joinUserToGroup);
 
     return joinUserToGroup;
   }

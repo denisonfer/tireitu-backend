@@ -25,7 +25,7 @@ class UsersGroups {
   group: Group;
 
   @Column()
-  id_user: string;
+  id_user: string | null;
 
   @Column()
   id_group: string;

@@ -32,4 +32,15 @@ usersGroupsRoutes.post(
   usersGroupsController.create,
 );
 
+usersGroupsRoutes.put(
+  '/:id_group',
+  celebrate({
+    [Segments.PARAMS]: {
+      id_group: Joi.string().required(),
+    },
+  }),
+  ensureAuthenticatedUser,
+  usersGroupsController.update,
+);
+
 export default usersGroupsRoutes;

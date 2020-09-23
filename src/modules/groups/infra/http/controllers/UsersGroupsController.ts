@@ -4,6 +4,7 @@ import { container } from 'tsyringe';
 import ShowUsersOfGroupService from '@modules/groups/services/ShowUsersOfGroupService';
 import JoinGroupUsingInviteService from '@modules/groups/services/JoinGroupUsingInviteService';
 import ShowGroupsOfUserService from '@modules/groups/services/ShowGroupsOfUserService';
+import ExitGroupService from '@modules/groups/services/ExitGroupService';
 
 class UsersGroupsController {
   public async show(req: Request, res: Response): Promise<Response> {
@@ -42,6 +43,20 @@ class UsersGroupsController {
     });
 
     return res.json(addParticipant);
+  }
+
+  public async update(req: Request, res: Response): Promise<Response> {
+    const id_user = req.user.id;
+    const { id_group } = req.params;
+
+    const exitGroup = container.resolve(ExitGroupService);
+
+    await exitGroup.execute({
+      id_group,
+      id_user,
+    });
+
+    return res.status(200).send();
   }
 }
 

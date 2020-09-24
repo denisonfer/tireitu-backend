@@ -25,7 +25,7 @@ class UsersGroups {
   group: Group;
 
   @Column()
-  id_user: string | null;
+  id_user: string;
 
   @Column()
   id_group: string;
@@ -33,9 +33,12 @@ class UsersGroups {
   @Column('boolean')
   admin: boolean;
 
+  @Column()
+  user_raffled: string;
+
   @ManyToOne(() => User, user => user.id)
   @JoinColumn({ name: 'id_user' })
-  user_raffled: User;
+  raffled_user: User;
 
   @CreateDateColumn()
   created_at: Date;

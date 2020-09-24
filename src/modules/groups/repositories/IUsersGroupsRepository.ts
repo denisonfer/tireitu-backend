@@ -10,4 +10,9 @@ export default interface IUsersGroupsRepository {
   save(usersGroups: UsersGroups): Promise<UsersGroups>;
   findUsersByGroup(id_group: string): Promise<UsersGroups[]>;
   findGroupsByUser(id_user: string): Promise<UsersGroups[]>;
+  remove(usersGroup: UsersGroups): Promise<void>;
+  findByIdPerUserAndGroup(
+    id_user: string,
+    id_group: string,
+  ): Promise<UsersGroups | undefined>;
 }

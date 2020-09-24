@@ -39,8 +39,6 @@ export default class ExitGroupService {
       throw new AppError('Usuário não é um participante do grupo', 401);
     }
 
-    groupOfUser.id_user = null;
-
-    await this.usersGroupsRepository.save(groupOfUser);
+    await this.usersGroupsRepository.remove(groupOfUser);
   }
 }

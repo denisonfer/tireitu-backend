@@ -46,4 +46,15 @@ export default class UsersGroupsRepository implements IUsersGroupsRepository {
 
     return groups;
   }
+
+  public async remove(usersGroup: UsersGroups): Promise<void> {
+    this.ormRepository.remove(usersGroup);
+  }
+
+  public async findByIdPerUserAndGroup(
+    id_user: string,
+    id_group: string,
+  ): Promise<UsersGroups | undefined> {
+    return this.ormRepository.findOne({ where: { id_user, id_group } });
+  }
 }

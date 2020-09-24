@@ -48,4 +48,12 @@ export default class FakeUsersGroupsRepository
 
     return groups;
   }
+
+  public async remove(usersGroup: UsersGroups): Promise<void> {
+    const inviteIndex = this.users_groups.findIndex(
+      i => i.id === usersGroup.id,
+    );
+
+    this.users_groups.splice(inviteIndex, 1);
+  }
 }

@@ -24,7 +24,7 @@ export default class AddRelationGroupInUsersGroups1597972029469
         columnNames: ['id_group'],
         referencedColumnNames: ['id'],
         referencedTableName: 'groups',
-        onDelete: 'SET NULL',
+        onDelete: 'CASCADE',
         onUpdate: 'CASCADE',
       }),
     );
